@@ -1,0 +1,58 @@
+{
+  "_comment": "Force-only DeepMD v1 config (no validation, no fparam). Dataset root has set.000 inside.",
+  "model": {
+    "type_map": ["C", "H", "N"],
+    "data_stat_nbatch": 1,
+    "descriptor": {
+      "type": "se_a",
+      "sel": [60, 60, 60],
+      "rcut_smth": 1.80,
+      "rcut": 6.00,
+      "neuron": [25, 50, 100],
+      "resnet_dt": false,
+      "axis_neuron": 8,
+      "type_one_side": true,
+      "precision": "float64",
+      "seed": 1
+    },
+    "fitting_net": {
+      "neuron": [120, 120, 120],
+      "resnet_dt": true,
+      "numb_fparam": 0,
+      "precision": "float64",
+      "seed": 1
+    }
+  },
+  "loss": {
+    "start_pref_e": 0.0,
+    "limit_pref_e": 0.0,
+    "start_pref_f": 1.0,
+    "limit_pref_f": 1.0,
+    "start_pref_v": 0.0,
+    "limit_pref_v": 0.0
+  },
+  "learning_rate": {
+    "type": "exp",
+    "start_lr": 0.001,
+    "decay_steps": 5000,
+    "stop_lr": 1e-8
+  },
+  "training": {
+    "training_data": {
+      "systems": ["../deepmd_data"],
+      "batch_size": 1,
+      "set_prefix": "set"
+    },
+    "stop_batch": 100000,
+    "seed": 1,
+    "disp_file": "lcurve.out",
+    "disp_freq": 100,
+    "save_freq": 1000,
+    "save_ckpt": "model.ckpt",
+    "disp_training": true,
+    "time_training": true,
+    "profiling": false,
+    "profiling_file": "timeline.json"
+  }
+}
+
